@@ -157,11 +157,11 @@ for i in range(len(cad_wall_lines)):
     i+=1
 
 # print(grouped_lines)
-def create_wall(doc, bound_line, default_wall_type_id, level_id, misterious_param_1 = 10, misterious_param_2 = 1, flag_1 = False, flag_2 = False):
+def create_wall(doc, bound_line, default_wall_type_id, level_id, mysterious_param_1=10, mysterious_param_2=1, flag_1=False, flag_2=False):
     t = DB.Transaction(doc, "Create new wall instance from cad line")
     t.Start()
     try:
-        wall = DB.Wall.Create(doc, bound_line, default_wall_type_id, level_id, 10, 0, False, False)
+        wall = DB.Wall.Create(doc, bound_line, default_wall_type_id, level_id, mysterious_param_1, mysterious_param_2, flag_1, flag_2)
         wall_location_line = wall.get_Parameter(DB.BuiltInParameter.WALL_KEY_REF_PARAM)
         if wall_location_line and wall_location_line.IsReadOnly == False:
             wall_location_line.Set(0)  # Define Linha central da parede como Linha de localizacao
